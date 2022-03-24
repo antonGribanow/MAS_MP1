@@ -34,8 +34,8 @@ public class Main {
         }
 
     public static void showMenu() {
-        System.out.println("1. Rent car");
-        System.out.println("2. Show rent cars");
+        System.out.println("1. New client");
+        System.out.println("2. Show all clients");
         System.out.println("3. Record to file");
         System.out.println("4. Read file");
         System.out.println("5. Log out");
