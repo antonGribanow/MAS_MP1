@@ -1,27 +1,26 @@
 import java.io.Serializable;
 import java.util.List;
-import java.util.UUID;
 
-public class Facility extends Room implements Serializable {
-     UUID id;
+public class Hospital extends Room implements Serializable {
+     int id;
      String street;
      String city;
      String code;
-     List<Room> roomsInFacility;
+     List<Room> roomsInHospital;
 
-    public Facility(String street, String city, String code, List<Room> roomsInFacility, List<String> equipment, double roomSurface) {
+    public Hospital(String street, String city, String code, List<Room> roomsInFacility, List<String> equipment, double roomSurface) {
         super(equipment, roomSurface);
-        this.id = UUID.randomUUID();
+        this.id = id;
         this.street = street;
         this.city = city;
         this.code = code;
-        this.roomsInFacility = roomsInFacility;
+        this.roomsInHospital = roomsInFacility;
     }
 
     @Override
     public double getSurface() { // todo przesłonięcie
         double surfaceValue = 0;
-        for (Room room : roomsInFacility) {
+        for (Room room : roomsInHospital) {
             surfaceValue += room.roomSurface;
         }
         return surfaceValue;
