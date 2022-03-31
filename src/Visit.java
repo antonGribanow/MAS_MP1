@@ -6,18 +6,14 @@ import java.util.*;
 
 public class Visit implements Serializable {
     public static int basicVisitCost = 200; // todo atrybut klasowy
-    public final UUID idVisit;
-    public final GregorianCalendar visitDate;
-    public final Room room; // todo atrybut złożony
-    public final String paymentMethod;
-    public String additionalInformation = null; // todo atrybut opcjonalny
-    public final Test test;
-    public final Patient patient;
-    private static List<Visit> allVisits = new ArrayList<>(); // todo ekstensja
+     Room room; // todo atrybut złożony
+     String paymentMethod;
+     String additionalInformation = null; // todo atrybut opcjonalny
+     Test test;
+     Patient patient;
+     static List<Visit> allVisits = new ArrayList<>(); // todo ekstensja
 
-    public Visit(GregorianCalendar visitDate, Room room, String paymentMethod, String additionalInformation, Test test, Patient patient) {
-        this.idVisit = UUID.randomUUID();
-        this.visitDate = visitDate;
+    public Visit(Room room, String paymentMethod, String additionalInformation, Test test, Patient patient) {
         this.room = room;
         this.paymentMethod = paymentMethod;
         this.additionalInformation = additionalInformation;
@@ -32,17 +28,13 @@ public class Visit implements Serializable {
 
     }
 
-    public int getVisitCost(Test test) { // todo atrybut pochodny - wyliczanie jakiejś wartości na bazie innego atrybutu
+    public int getVisitCost(Test test) { // todo atrybut pochodny - wyliczanie wartości na bazie innego atrybutu
         return basicVisitCost + test.cost;
     }
 
     @Override
     public String toString() {
         return "Visit: " +
-                "visit id: " + idVisit +
-                ", visitDate: " + visitDate.get(Calendar.DATE) +
-                "." + visitDate.get(Calendar.MONTH) +
-                "." + visitDate.get(Calendar.YEAR) +
                 ", room: " + room.toString() +
                 ", paymentMethod: " + paymentMethod +
                 ", additionalInformation: " + additionalInformation +

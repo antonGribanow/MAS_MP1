@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -21,6 +22,16 @@ public class Test implements Serializable {
 
     public void updatePreparationToTest(String newPreparation) { // przeciążenie
         preparationToTest.add(newPreparation);
+    }
+
+    static Test getTest() {
+        return new Test(
+                "MRI",
+                Arrays.asList(
+                        "DO NOT SMOKE",
+                        "DO NOT EAT"
+                ),
+                300);
     }
 
     @Override

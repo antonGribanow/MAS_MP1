@@ -28,6 +28,22 @@ public class Main {
         }
     }
 
+    public static void displayMainMenu() {
+        System.out.println("1. Create a visit");
+        System.out.println("2. Display your reservations for visits");
+        System.out.println("3. Save to file");
+        System.out.println("4. Read from file");
+        System.out.println("5. Exit");
+    }
+
+    public static void createVisit() {
+        Test enduredTest = Test.getTest();
+        Visit visit = new Visit(
+                new Room(Arrays.asList("Scalpel", "Manometer"), 20.5), "Cash", null, enduredTest,
+                new Patient(new ArrayList<>(Collections.singleton(enduredTest)), Arrays.asList("I'm allergic to milk", "I'm scared to loud noises")));
+        System.out.println("Visit created!");
+    }
+
     public static void serialise() {
         try {
             ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(fileLocation));
@@ -51,40 +67,4 @@ public class Main {
             e.printStackTrace();
         }
     }
-
-
-    public static void displayMainMenu() {
-        System.out.println("1. Create a visit");
-        System.out.println("2. Display your reservations for visits");
-        System.out.println("3. Save to file");
-        System.out.println("4. Read from file");
-        System.out.println("5. Exit");
-    }
-
-    public static void createVisit() {
-        Test enduredTest = getTest();
-        Visit visit = new Visit(
-                new GregorianCalendar(2022, Calendar.JULY, 13),
-                new Room(Arrays.asList("Scalpel", "Manometer"), 20.5), "Cash", null, enduredTest,
-                new Patient(new ArrayList<>(Collections.singleton(enduredTest)),
-                        Arrays.asList(
-                                "I'm allergic to milk",
-                                "I'm scared to loud noises"
-                        )
-                )
-        );
-        System.out.println("Visit created!");
-    }
-
-    private static Test getTest() {
-        return new Test(
-                "MRI",
-                Arrays.asList(
-                        "DO NOT SMOKE",
-                        "DO NOT DO WORKOUT",
-                        "DO NOT EAT"
-                ),
-                300);
-    }
-
 }
